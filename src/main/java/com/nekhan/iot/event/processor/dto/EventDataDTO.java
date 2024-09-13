@@ -3,6 +3,7 @@ package com.nekhan.iot.event.processor.dto;
 import static com.nekhan.iot.event.processor.constants.ApiConstant.*;
 import static com.nekhan.iot.event.processor.constants.LocalizationKey.MISSING_MANDATORY_PARAMETERS;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -21,5 +22,6 @@ public class EventDataDTO {
     Long humidity;
     @Schema(description = BATTERY_LEVEL_DESCRIPTION, requiredMode = Schema.RequiredMode.REQUIRED, example = "90")
     @NotNull(message = MISSING_MANDATORY_PARAMETERS)
+    @JsonProperty("battery_level")
     Long batterLevel;
 }

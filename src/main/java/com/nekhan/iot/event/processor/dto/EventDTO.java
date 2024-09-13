@@ -21,17 +21,20 @@ public class EventDTO {
     @Schema(description = DEVICE_ID_DESCRIPTION, requiredMode = Schema.RequiredMode.REQUIRED, example = "DEV0001")
     @NotBlank(message = MISSING_MANDATORY_PARAMETERS)
     @Pattern(regexp = DEVICE_ID_REGEXP, message = INVALID_DEVICE_ID_PATTERN)
+    @JsonProperty("device_id")
     private String deviceId;
 
     @Schema(description = EVENT_TYPE_DESCRIPTION, requiredMode = Schema.RequiredMode.REQUIRED, example = "alert")
     @NotBlank(message = MISSING_MANDATORY_PARAMETERS)
     @Pattern(regexp = EVENT_TYPE_REGEXP, message = INVALID_EVENT_TYPE_PATTERN)
+    @JsonProperty("event_type")
     private String eventType;
 
     @Schema(description = EVENT_TIMESTAMP_DESCRIPTION, requiredMode = Schema.RequiredMode.REQUIRED,
             example = "2024-09-04T09:21:52+07:00")
     @NotBlank(message = MISSING_MANDATORY_PARAMETERS)
-    private Timestamp timestamp;
+    @JsonProperty("timestamp")
+    private Timestamp dateTime;
     @JsonProperty("data")
     private EventDataDTO eventData;
 }

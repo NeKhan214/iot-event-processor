@@ -2,15 +2,11 @@ package com.nekhan.iot.event.processor.exception.handler;
 
 import java.time.LocalDateTime;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 public class ErrorDetails {
     private LocalDateTime timestamp;
     private String message;
