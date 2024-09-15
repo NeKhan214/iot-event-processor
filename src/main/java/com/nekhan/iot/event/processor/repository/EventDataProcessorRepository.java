@@ -1,12 +1,11 @@
 package com.nekhan.iot.event.processor.repository;
 
 import com.nekhan.iot.event.processor.entity.EventDataEntity;
-import com.nekhan.iot.event.processor.entity.EventEntity;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * The {@code EventProcessorRepository} interface provides CRUD operations for {@link EventEntity} objects.
+ * The {@code EventDataProcessorRepository} interface provides CRUD operations for {@link EventDataEntity} objects.
  * This repository is reactive and extends the {@link ReactiveCrudRepository} interface, allowing for non-blocking
  * database operations.
  *
@@ -15,10 +14,10 @@ import org.springframework.stereotype.Repository;
  * <p>Example usage:</p>
  * <pre>{@code
  * @Autowired
- * private EventProcessorRepository repository;
+ * private EventDataProcessorRepository repository;
  *
- * public Mono<EventEntity> saveEventData(EventEntity event) {
- *     return repository.save(event);
+ * public Mono<EventDataEntity> saveEventData(EventDataEntity eventData) {
+ *     return repository.save(eventData);
  * }
  * }</pre>
  *
@@ -26,6 +25,6 @@ import org.springframework.stereotype.Repository;
  * @version 1.0
  */
 @Repository
-public interface EventProcessorRepository extends ReactiveCrudRepository<EventEntity, Long> {
+public interface EventDataProcessorRepository extends ReactiveCrudRepository<EventDataEntity, Long> {
 
 }

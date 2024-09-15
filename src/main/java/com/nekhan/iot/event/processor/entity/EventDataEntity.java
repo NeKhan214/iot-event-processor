@@ -1,35 +1,44 @@
 package com.nekhan.iot.event.processor.entity;
 
+import static com.nekhan.iot.event.processor.constants.ApiConstant.EVENT_DATA_TABLE_NAME;
+
 import java.sql.Timestamp;
-
-import static com.nekhan.iot.event.processor.constants.ApiConstant.*;
-
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import lombok.Data;
+import org.springframework.data.annotation.*;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-@Getter
-@Setter
-@NoArgsConstructor
+/**
+ * Entity class representing events.
+ * This class is annotated with Lombok and reactive annotations for automatic generation of
+ * boilerplate code and ORM mapping.
+ *
+ * @author Neha Khan
+ * @version 1.0
+ */
+@Data
 @AllArgsConstructor
-@Entity
 @Table(name = EVENT_DATA_TABLE_NAME)
-public class EventDataEntity extends AuditableEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EventDataSequence")
-    @SequenceGenerator(name = "EventDataSequence", sequenceName = EVENT_ENTITY_SEQUENCE_NAME, allocationSize = 1)
-    private Long id;
-    @Column(name = "TEMPERATURE", nullable = false)
+public class EventDataEntity {
+    @Column("TEMPERATURE")
     Long temperature;
-    @Column(name = "HUMIDITY", nullable = false)
+    @Column("HUMIDITY")
     Long humidity;
-    @Column(name = "BATTER_LEVEL", nullable = false)
+    @Column("BATTER_LEVEL")
     Long batterLevel;
+    @Id
+    private Long id;
+    @Column("CREATED_BY")
+    @CreatedBy
+    private String createdBy;
+    @CreatedDate
+    @Column("CREATED_DATE")
+    private Timestamp createdDate;
+    @Column("UPDATED_BY")
+    @LastModifiedBy
+    private String updatedBy;
+    @LastModifiedDate
+    @Column("UPDATED_DATE")
+    private Timestamp updatedDate;
 }

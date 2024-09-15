@@ -1,35 +1,47 @@
 package com.nekhan.iot.event.processor.entity;
 
+import static com.nekhan.iot.event.processor.constants.ApiConstant.EVENT_ENTITY_TABLE_NAME;
+
 import java.sql.Timestamp;
 
-import static com.nekhan.iot.event.processor.constants.ApiConstant.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.data.annotation.*;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-@Getter
-@Setter
-@NoArgsConstructor
+/**
+ * Entity class representing event data.
+ * This class is annotated with Lombok and reactive annotations for automatic generation of
+ * boilerplate code and ORM mapping.
+ *
+ * @author Neha Khan
+ * @version 1.0
+ */
+@Data
 @AllArgsConstructor
-@Entity
 @Table(name = EVENT_ENTITY_TABLE_NAME)
-public class EventEntity extends AuditableEntity {
+public class EventEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EventAttributeSequence")
-    @SequenceGenerator(name = "EventAttributeSequence", sequenceName = EVENT_ENTITY_SEQUENCE_NAME, allocationSize = 1)
     private Long id;
-    @Column(name = "DEVICE_ID", unique = true, nullable = false)
+    @Column("DEVICE_ID")
     private String deviceId;
-    @Column(name = "EVENT_TYPE", nullable = false)
+    @Column("EVENT_TYPE")
     private String eventType;
-    @Column(name = "DATE_TIME", nullable = false)
+    @Column("DATE_TIME")
     private Timestamp dateTime;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "EVENT_DATA_ID", referencedColumnName = "ID")
-    private EventDataEntity eventData;
+    @Column("EVENT_DATA_ID")
+    private Long eventDataId;
+    @Column("CREATED_BY")
+    @CreatedBy
+    private String createdBy;
+    @CreatedDate
+    @Column("CREATED_DATE")
+    private Timestamp createdDate;
+    @Column("UPDATED_BY")
+    @LastModifiedBy
+    private String updatedBy;
+    @LastModifiedDate
+    @Column("UPDATED_DATE")
+    private Timestamp updatedDate;
 }

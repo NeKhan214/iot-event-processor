@@ -64,7 +64,7 @@ public final class ApiConstant {
     /**
      * Device Id description of the iot device.
      */
-    public static final String DEVICE_ID_DESCRIPTION  = "Device Id of the iot device. Maximum chars = 20";
+    public static final String DEVICE_ID_DESCRIPTION = "Device Id of the iot device. Maximum chars = 20";
 
     /**
      * DeviceId validation expression.
@@ -74,7 +74,7 @@ public final class ApiConstant {
     /**
      * Event Type description of the iot device.
      */
-    public static final String EVENT_TYPE_DESCRIPTION  = "Event Type of the iot device. Maximum chars = 20";
+    public static final String EVENT_TYPE_DESCRIPTION = "Event Type of the iot device. Maximum chars = 20";
 
     /**
      * Event validator expression.
@@ -107,9 +107,14 @@ public final class ApiConstant {
     public static final String SUMMARY_STORE_EVENT_API = "API to store incoming events.";
 
     /**
-     * System
+     * System user.
      */
     public static final String SYSTEM_USER = "system";
+
+    /**
+     * Configuration to set max number of requests per minute.
+     */
+    public static final String MAX_NUMBER_OF_REQUESTS_PER_MINUTE = "max.number.of.requests.per.minute";
 
     private ApiConstant() {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
